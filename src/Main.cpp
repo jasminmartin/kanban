@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+void dummyColumns {
   Column *todo = new Column("To Do");
   todo->Insert(new Ticket(1,"Finish DSA","a"));
   todo->Insert(new Ticket(2,"Graduate","b"));
@@ -16,6 +16,18 @@ int main() {
   done->Insert(new Ticket(1,"Make Kanban board","e"));
   done->Insert(new Ticket(2,"Write report","f"));
 
-  cout << "Welcome To The KanBan Board" << endl;
+}
 
+void dummyDependencies {
+DependencyGraph* dep = new DependencyGraph(200);
+dep->AddVertex(new Ticket(1, 'A'));
+dep->AddVertex(new Ticket(2, 'B'));
+
+dep->AddEdge(0,1,1);
+}
+
+int main() {
+  dummyColumns();
+  cout << "Welcome To The KanBan Board" << endl;
+  
 }
