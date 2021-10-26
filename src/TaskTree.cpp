@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+
 using namespace std;
 
 enum Status { complete, partial, incomplete };
@@ -8,15 +10,13 @@ class Task {
     public:
     string title;
     Status status;
-    size_t numberOfChildren;
-    Task** children;
+    vector<Task> children;
 
 
-    Task(string title, Task** children, size_t numberOfChildren) {
+    Task(string title, vector<Task> children) {
         this->title = title;
         this->children = children;
         this->status = incomplete;
-        this->numberOfChildren=numberOfChildren;
     }
 
     void DisplayTree() {
@@ -34,11 +34,16 @@ class Task {
     }
 
     void DisplayChildren(int depth) {
-        for(int i=0; i < numberOfChildren; i++) {
-            this->children[i]->DisplayTree(depth);
+        for(int i=0; i < this->children.size(); i++) {
+            this->children[i].DisplayTree(depth);
         }
     }
 
+    Task& AddChild(string name) {
+        Task newTask = Task(name, vector<Task>());
+        this->children.push_back(newTask);
+        return this->children.back();
+    }
 
     void SetComplete() {
         this->status= complete;
@@ -57,22 +62,30 @@ class Task {
 int main() {
   cout << "Task Tree Test" << endl;
 
-  Task* emptyTaskList[] = {};
+ 
+
+  vector<Task> emptyTaskList;
    
-  Task first = Task("First", emptyTaskList, 0);
+  Task first = Task("First", emptyTaskList);
 
-//   Task* second = new Task("Second", emptyTaskList, 0);
-//   Task* third = new Task("Third", emptyTaskList, 0);
-//   Task* fourth = new Task("Fourth", emptyTaskList, 0);
+  Task second = Task("Second", emptyTaskList);
+  Task third = Task("Third", emptyTaskList);
+  Task fourth = Task("Fourth", emptyTaskList);
 
-//   Task* childArray[] = {second, third, fourth};
+  vector<Task> children;
+  children.push_back(second);
+  children.push_back(third);
+  children.push_back(fourth);
 
-//   Task("Fifth", childArray, 3).DisplayTree();
+  Task fifth = Task("Fifth", children);
+  first.DisplayTree();
+  fifth.DisplayTree();
+
+   
+    first.AddChild("Foo").AddChild("Bar").AddChild("Baz");
+    first.AddChild("Bing");
+    first.AddChild("Bang").AddChild("Bop");
 
     first.DisplayTree();
-
-    //TODO: switch to std::vector for children (to allow add/remove)
-    //first.addChild(new Task("foo", emptyTaskList, 0));
-
-    first.DisplayTree();
+    cout << first.children[0].title << endl;
 };
