@@ -1,33 +1,31 @@
-#include "Column.cpp"
+// #include "Ticket.cpp"
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-void dummyColumns {
-  Column *todo = new Column("To Do");
-  todo->Insert(new Ticket(1,"Finish DSA","a"));
-  todo->Insert(new Ticket(2,"Graduate","b"));
 
-  Column *progress = new Column("In Progress");
-  progress->Insert(new Ticket(1,"Allocate grade","c"));
-  progress->Insert(new Ticket(2,"Mark report","d"));
-
-  Column *done = new Column("Done");
-  done->Insert(new Ticket(1,"Make Kanban board","e"));
-  done->Insert(new Ticket(2,"Write report","f"));
-
-}
-
-void dummyDependencies {
-DependencyGraph* dep = new DependencyGraph(200);
-dep->AddVertex(new Ticket(1, 'A'));
-dep->AddVertex(new Ticket(2, 'B'));
-
-dep->AddEdge(0,1,1);
-}
-
-int main() {
-  dummyColumns();
-  cout << "Welcome To The KanBan Board" << endl;
+// vector<Task> mockTasks() {
+//   vector<Task> emptyTaskList;
+//   Task first = Task("Pick bread", emptyTaskList);
+//   Task second = Task("Pick topping ", emptyTaskList);
+//   Task third = Task("Pick garnish", emptyTaskList);
+//   Task fourth = Task("Heat under grill", emptyTaskList);
   
-}
+//   vector<Task> children;
+//   children.push_back(second);
+//   children.push_back(third);
+//   children.push_back(fourth);
+
+//   first.AddChild("Slice").AddChild("Choose thickness");
+//   first.AddChild("Toast");
+//   first.children[0].SetComplete();
+//   first.children[0].children[0].SetComplete();
+//   return *first;
+// }
+
+
+// int main() {
+//   Ticket ticketA = new Ticket("Make Sandwich", mockTasks());
+//   cout << "Welcome To The KanBan Board" << endl;
+//   ticketA.DisplayTicket();
+// }
