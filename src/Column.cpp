@@ -65,6 +65,7 @@ public:
     Ticket *current = first;
     while (current != 0) {
       current->DisplayTicket();
+      cout << "" << endl;
       current = current->next;
     }
   }

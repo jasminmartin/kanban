@@ -38,7 +38,8 @@ public:
     }
   }
 
-  void recordBlockingRelationship(int blockedRef, int blockerRef) {   
+  void recordBlockingRelationship(int blockedRef, int blockerRef) {
+      cout << "Ticket " << blockedRef << " is blocked by " << blockerRef << endl;
     this->tickets.find(blockedRef)->second.blockers.push_back(blockerRef);
   }
 

@@ -30,7 +30,7 @@ public:
     for (int i = 0; i < depth; i++) {
       cout << "---";
     }
-    cout << ", Reference: " << ref;
+    cout << "Reference: " << ref;
     cout << ", Title: " << this->title;
     cout << ", Status: " << this->getStatus(status) << endl;
     DisplayChildren(depth + 1);
