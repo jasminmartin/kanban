@@ -1,13 +1,17 @@
-#include "Ticket.cpp"
+#include <string>
+
+using namespace std;
 
 class Column {
 public:
-  string columName;
+  string columnName;
   Ticket *first;
+  int length;
 
-  Column(string columName) {
+  Column(string columnName) {
     first = 0;
-    this->columName = columName;
+    this->columnName = columnName;
+    this->length = 0;
   }
 
   bool IsEmpty() { return (first == 0); }
@@ -15,6 +19,7 @@ public:
   void Insert(Ticket *newTicket) {
     newTicket->next = first;
     first = newTicket;
+    this->length++;
   }
 
   Ticket *DeleteFirstTicket() {
@@ -27,7 +32,7 @@ public:
     Ticket *current = first;
     Ticket *previous = first;
 
-    while (current->reference != key) {
+    while (current->ref != key) {
       if (current->next == 0) {
         return 0;
       } else {
@@ -37,6 +42,7 @@ public:
     }
     if (current == first) {
       first = first->next;
+      this->length--;
     } else {
       previous->next = current->next;
     }
@@ -45,7 +51,7 @@ public:
 
   Ticket *Find(int key) {
     Ticket *current = first;
-    while (current->reference != key) {
+    while (current->ref != key) {
       if (current->next == 0) {
         return 0;
       } else {
@@ -55,7 +61,7 @@ public:
     return current;
   }
 
-  void Display() {
+  void DisplayTickets() {
     Ticket *current = first;
     while (current != 0) {
       current->DisplayTicket();
@@ -63,7 +69,13 @@ public:
     }
   }
 
-  string GetColumnName() {
-      return columName;
+  void DisplayTicketsAndTasks() {
+    Ticket *current = first;
+    while (current != 0) {
+      current->DisplayTasks();
+      current = current->next;
+    }
   }
+
+  string GetColumnName() { return columnName; }
 };
