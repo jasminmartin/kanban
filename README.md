@@ -4,7 +4,7 @@ Welcome to the kanban board. Here you will see the kanban take advantage of thre
 - Tree
 - Graph
 
-Please compile and run to see the board in action.
+Please compile from src/ and run to see the board in action.
 
 ### To Compile and Run:
 clang++ -o main Main.cpp --std=c++17 && ./main
